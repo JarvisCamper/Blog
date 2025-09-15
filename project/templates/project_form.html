@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+This is my Blog 
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mt-4">
+    Welcome to My Blog Project
+</h1>
+
+<h2>
+  {% if form.instance.pk %}
+    Edit Blog
+  {% else %} 
+    Create New Blog
+  {% endif %}
+  <form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-warning">Submit
+        </button>
+    </form>
+    <a href="{% url 'project_list' %}" class="btn btn-secondary mt-3">Back to Blog  List</a>
+</h2>
+
+
+{% endblock %}
